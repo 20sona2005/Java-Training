@@ -1,0 +1,184 @@
+
+============================================================
+                    RETAIL ORDER DESK
+                  DSA ASSESSMENT OUTPUTS
+============================================================
+
+
+============================================================
+TASK 1 - SEARCHING TECHNIQUES
+============================================================
+
+Total Orders Loaded: 50000
+
+Searching Order ID: 150000
+
+--- Linear Search Result ---
+Order ID: 150000
+Customer ID: 10373
+Amount: 9315.11
+Created At: 2026-10-20 04:41:50
+
+--- Binary Search Result ---
+Order ID: 150000
+Customer ID: 10373
+Amount: 9315.11
+Created At: 2026-10-20 04:41:50
+
+--- Performance Comparison ---
+Linear Search Average: 97013.30 ns
+Binary Search Average: 425.10 ns
+
+--- Complexity Analysis ---
+Linear Search Time: O(n)
+Binary Search Time: O(log n)
+Linear Search Space: O(1)
+Binary Search Space: O(1)
+
+
+============================================================
+TASK 2 - SORTING TECHNIQUES
+============================================================
+
+Total CSV Records: 50000
+Records Used for Sorting: 10000
+
+===== BUBBLE SORT PASS TRACING =====
+Original: [450.0, 1200.0, 850.0, 2500.0, 700.0]
+Pass 1: [1200.0, 850.0, 2500.0, 700.0, 450.0]
+Pass 2: [1200.0, 2500.0, 850.0, 700.0, 450.0]
+Pass 3: [2500.0, 1200.0, 850.0, 700.0, 450.0]
+
+===== BUBBLE SORT =====
+Execution Time: 184.330 ms
+
+===== MERGE SORT =====
+Execution Time: 6.395 ms
+
+===== JAVA BUILT-IN SORT =====
+Execution Time: 9.072 ms
+
+===== SORTED ORDERS =====
+102031 | 7468 | 9998.93 | 2026-10-17 16:10:15
+109680 | 2562 | 9996.63 | 2026-10-05 16:19:33
+103262 | 2853 | 9996.54 | 2026-10-15 09:10:22
+106999 | 1114 | 9992.90 | 2026-10-13 11:40:22
+103490 | 7598 | 9992.02 | 2026-10-22 07:12:43
+
+All three sorting results match: true
+
+===== COMPLEXITY =====
+Bubble Sort: O(n^2)
+Merge Sort: O(n log n)
+Built-in Object Sort: O(n log n)
+Bubble Sort Space: O(1)
+Merge Sort Space: O(n)
+Built-in Object Sort Space: O(n)
+
+
+============================================================
+TASK 3 - DUPLICATE ORDER DETECTION
+============================================================
+
+===== DUPLICATE ORDER DETECTION =====
+Duplicate Found: Order ID: 100101 | Customer ID: 7527 | Amount: 7384.09 | Created At: 2026-10-05T04:37:18
+Duplicate Found: Order ID: 100121 | Customer ID: 2470 | Amount: 3110.2 | Created At: 2026-10-04T10:27:41
+Duplicate Found: Order ID: 100141 | Customer ID: 2723 | Amount: 4334.29 | Created At: 2026-10-14T02:26:11
+Duplicate Found: Order ID: 100161 | Customer ID: 6097 | Amount: 1753.01 | Created At: 2026-10-24T12:24:24
+Duplicate Found: Order ID: 100181 | Customer ID: 3668 | Amount: 1485.39 | Created At: 2026-10-16T00:45:08
+Duplicate Found: Order ID: 100201 | Customer ID: 9275 | Amount: 7703.07 | Created At: 2026-10-29T20:33:58
+Duplicate Found: Order ID: 100221 | Customer ID: 5533 | Amount: 8785.85 | Created At: 2026-10-28T01:52:25
+Duplicate Found: Order ID: 100241 | Customer ID: 3082 | Amount: 6024.37 | Created At: 2026-10-19T19:39:44
+Duplicate Found: Order ID: 100261 | Customer ID: 8329 | Amount: 8056.23 | Created At: 2026-10-18T15:06:14
+Duplicate Found: Order ID: 100281 | Customer ID: 9111 | Amount: 9471.15 | Created At: 2026-10-03T11:33:56
+Duplicate Found: Order ID: 100301 | Customer ID: 3909 | Amount: 1702.03 | Created At: 2026-10-01T15:33:38
+Duplicate Found: Order ID: 100321 | Customer ID: 9142 | Amount: 3628.53 | Created At: 2026-10-24T01:25:34
+Duplicate Found: Order ID: 100341 | Customer ID: 3648 | Amount: 762.88 | Created At: 2026-10-29T14:05:15
+Duplicate Found: Order ID: 100361 | Customer ID: 5230 | Amount: 7649.74 | Created At: 2026-10-23T10:59:51
+Duplicate Found: Order ID: 100381 | Customer ID: 2722 | Amount: 7244.62 | Created At: 2026-10-08T20:58:17
+Duplicate Found: Order ID: 100401 | Customer ID: 2399 | Amount: 2248.0 | Created At: 2026-10-10T07:25:58
+Duplicate Found: Order ID: 100421 | Customer ID: 6131 | Amount: 201.9 | Created At: 2026-10-16T04:33:27
+Duplicate Found: Order ID: 100441 | Customer ID: 2620 | Amount: 5956.48 | Created At: 2026-10-12T22:15:22
+Duplicate Found: Order ID: 100461 | Customer ID: 1270 | Amount: 8930.68 | Created At: 2026-10-04T04:14:46
+Duplicate Found: Order ID: 100481 | Customer ID: 10571 | Amount: 7863.38 | Created At: 2026-10-04T06:35:01
+
+===== SUMMARY =====
+Total Orders Checked: 50000
+Duplicate Orders Found: 20
+Unique Orders: 49980
+
+===== COMPLEXITY =====
+Time Complexity: O(n) average
+Space Complexity: O(n)
+
+
+============================================================
+TASK 4 - STACK AND QUEUE
+============================================================
+
+===== STACK USING ARRAY =====
+Added to stack: 1001
+Added to stack: 1002
+Added to stack: 1003
+Stack contents: 1003 1002 1001
+Undo operation: 1003
+Stack contents: 1002 1001
+
+===== QUEUE USING ARRAY =====
+Added to queue: 2001
+Added to queue: 2002
+Added to queue: 2003
+Queue contents: 2001 2002 2003
+Processing order: 2001
+Queue contents: 2002 2003
+
+===== JAVA BUILT-IN STACK =====
+Undo operation: 1003
+Remaining stack: [1002, 1001]
+
+===== JAVA BUILT-IN QUEUE =====
+Processing order: 2001
+Remaining queue: [2002, 2003]
+
+===== COMPLEXITY =====
+Stack Push: O(1)
+Stack Pop: O(1)
+Queue Enqueue: O(1)
+Queue Dequeue: O(1)
+Stack Space: O(n)
+Queue Space: O(n)
+
+
+============================================================
+TASK 5 - GREEDY VS DYNAMIC PROGRAMMING
+============================================================
+
+===== NORMAL REFUND USING GREEDY =====
+Refund Amount: 786
+Greedy Combination: 500 x 1  200 x 1  50 x 1  20 x 1  10 x 1  5 x 1  1 x 1
+Minimum Notes/Coins: 7
+
+===== NORMAL REFUND USING DP =====
+DP Combination: 500 200 50 20 10 5 1
+Minimum Notes/Coins: 7
+
+===== CASE WHERE GREEDY FAILS =====
+Refund Amount: 6
+Denominations: [4, 3, 1]
+Greedy Combination: 4 x 1  1 x 2
+Greedy Notes/Coins: 3
+
+===== SOLUTION USING DYNAMIC PROGRAMMING =====
+DP Combination: 3 3
+DP Minimum Notes/Coins: 2
+
+===== COMPLEXITY =====
+Greedy Time: O(d)
+Greedy Space: O(1)
+DP Time: O(amount * d)
+DP Space: O(amount)
+
+
+============================================================
+                    END OF OUTPUTS
+============================================================
