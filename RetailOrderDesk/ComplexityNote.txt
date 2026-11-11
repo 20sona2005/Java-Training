@@ -1,0 +1,103 @@
+
+============================================================
+                    RETAIL ORDER DESK
+             DSA COMPLEXITY ANALYSIS NOTE
+============================================================
+
+
+1. SEARCHING TECHNIQUES
+
+Linear Search:
+Time Complexity : O(n)
+Space Complexity : O(1)
+
+Binary Search:
+Time Complexity : O(log n)
+Space Complexity : O(1)
+
+Reason for Selection:
+Linear Search checks each order one by one, whereas Binary
+Search repeatedly divides the sorted data into halves.
+Both techniques were selected to compare their searching
+performance. Binary Search is faster for sorted order IDs.
+
+
+2. SORTING TECHNIQUES
+
+Bubble Sort:
+Time Complexity : O(n^2)
+Space Complexity : O(1)
+
+Merge Sort:
+Time Complexity : O(n log n)
+Space Complexity : O(n)
+
+Java Built-in Sort:
+Time Complexity : O(n log n)
+Space Complexity : O(n)
+
+Reason for Selection:
+Bubble Sort was selected to understand simple comparison-
+based sorting. Merge Sort was selected because it performs
+better with large datasets. Java Built-in Sort was used
+to compare the performance of a standard optimized sorting
+method. All three algorithms arrange orders by amount in
+descending order.
+
+
+3. DUPLICATE ORDER DETECTION
+
+HashSet:
+Time Complexity : O(n) average
+Space Complexity : O(n)
+
+Reason for Selection:
+HashSet was selected because it identifies duplicate orders
+efficiently. The program checks customer ID, amount, and
+the date and minute of the order creation time. It detected
+20 duplicate orders from 50,000 records.
+
+
+4. STACK AND QUEUE
+
+Stack:
+Push Time Complexity : O(1)
+Pop Time Complexity : O(1)
+Space Complexity : O(n)
+
+Queue:
+Enqueue Time Complexity : O(1)
+Dequeue Time Complexity : O(1)
+Space Complexity : O(n)
+
+Reason for Selection:
+Stack follows LIFO (Last In, First Out) and was selected
+to demonstrate the Undo operation. Queue follows FIFO
+(First In, First Out) and was selected to demonstrate
+retail order processing. ArrayDeque was used for comparison
+with Java's built-in collections.
+
+
+5. GREEDY VS DYNAMIC PROGRAMMING
+
+Greedy Algorithm:
+Time Complexity : O(d)
+Space Complexity : O(1)
+
+Dynamic Programming:
+Time Complexity : O(amount * d)
+Space Complexity : O(amount)
+
+Reason for Selection:
+Greedy was selected because it chooses the largest possible
+denomination first and provides a simple refund calculation.
+Dynamic Programming was selected because it checks different
+combinations to find the minimum number of coins. For an
+amount of 6 with denominations 4, 3, and 1, Greedy requires
+3 coins (4 + 1 + 1), whereas Dynamic Programming requires
+only 2 coins (3 + 3).
+
+
+============================================================
+                          END 
+============================================================
