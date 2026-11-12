@@ -1,0 +1,53 @@
+Set 1 – E-Commerce Catalogue and Traffic Analysis
+
+
+DECISION TABLE
+
+S.No. | Problem | Data Structure / Algorithm Pattern Used | Reason for Selection
+
+1. Product category insertion, searching and traversal
+   Data Structure: Binary Search Tree (BST)
+   Reason: BST helps organize product categories and supports efficient insertion, searching and traversal.
+
+2. SKU lookup and collision handling
+   Data Structure: Hash Table with Chaining and HashMap
+   Reason: Hashing provides fast SKU searching. Chaining handles collisions by storing multiple elements at the same index.
+
+3. Microservice deployment dependencies and cycle detection
+   Data Structure: Graph using BFS and DFS
+   Reason: Graph represents dependencies between microservices. BFS and DFS help traverse the graph, while cycle detection identifies circular dependencies.
+
+4. Finding the busiest continuous 3-hour traffic period
+   Algorithm Pattern: Sliding Window
+   Reason: Sliding Window efficiently calculates the maximum visitor count in a continuous 3-hour period without repeatedly calculating the entire sum.
+
+5. Finding product price pairs matching a gift-card value
+   Algorithm Pattern: Two Pointers
+   Reason: Two Pointers efficiently finds matching pairs in a sorted array by moving the left and right pointers based on their sum.
+
+
+TIME AND SPACE COMPLEXITY
+
+S.No. | Algorithm | Time Complexity | Space Complexity
+
+1. BST
+   Average: O(log n)
+   Worst: O(n)
+   Space: O(n)
+
+2. Hash Table / HashMap
+   Average: O(1)
+   Worst: O(n)
+   Space: O(n)
+
+3. Graph (BFS/DFS)
+   Time: O(V + E)
+   Space: O(V + E)
+
+4. Sliding Window
+   Time: O(n)
+   Space: O(1)
+
+5. Two Pointers (including sorting)
+   Time: O(n log n)
+   Auxiliary Space: O(log n) for sorting
