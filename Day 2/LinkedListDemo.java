@@ -129,6 +129,25 @@ class LinkedList {
 
     temp.next = null;
     }
+
+    void showMiddleNode() {
+
+    if (head == null) {
+        System.out.println("List is Empty");
+        return;
+    }
+
+    Node slow = head;
+    Node fast = head;
+
+    while (fast != null && fast.next != null) {
+
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+
+    System.out.println("Middle Node: " + slow.data);
+    }
  
     // Display linked list
     void show() {
@@ -160,6 +179,7 @@ public class LinkedListDemo {
         list.deleteAtBeginning();
 
         list.show();
+        list.showMiddleNode();
     }
 }
  

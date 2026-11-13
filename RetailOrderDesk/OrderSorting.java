@@ -174,7 +174,7 @@ public class OrderSorting {
 
         try {
 
-            Order[] allOrders = loadOrders("orders.csv");
+            Order[] allOrders = loadOrders("RetailOrderDesk/orders.csv");
 
             int size = 10000;
 

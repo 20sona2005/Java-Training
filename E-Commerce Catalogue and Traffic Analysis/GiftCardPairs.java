@@ -10,7 +10,7 @@ public class GiftCardPairs {
             100, 200, 300, 400, 500, 600, 700, 800
         };
 
-        // Gift card value
+        // Gift card value  
         int target = 900;
 
         // Sort the array

@@ -35,7 +35,7 @@ public class DuplicateDetection {
         DateTimeFormatter formatter =
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-        try (BufferedReader br = new BufferedReader(new FileReader("orders.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("RetailOrderDesk/orders.csv"))) {
 
             String line;
             br.readLine();

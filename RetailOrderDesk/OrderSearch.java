@@ -111,7 +111,7 @@ public class OrderSearch {
         try {
 
             
-            Order[] orders = loadOrders("orders.csv");
+            Order[] orders = loadOrders("RetailOrderDesk/orders.csv");
 
             System.out.println("Total Orders Loaded: "
                     + orders.length);

@@ -1,51 +1,47 @@
 
 import java.util.*;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class MicroserviceGraph {
 
-    int vertices;
-    ArrayList<ArrayList<Integer>> adj;
+    ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+    String[] services = {
+        "Pricing", "Inventory", "Cart",
+        "Payment", "Notification"
+    };
 
-    MicroserviceGraph(int v) {
-        vertices = v;
-        adj = new ArrayList<>();
-
-        for (int i = 0; i < v; i++) {
-            adj.add(new ArrayList<>());
+    MicroserviceGraph() {
+        for (int i = 0; i < services.length; i++) {
+            graph.add(new ArrayList<>());
         }
     }
 
     // Add dependency
-    void addEdge(int source, int destination) {
-        adj.get(source).add(destination);
+    void addEdge(int from, int to) {
+        graph.get(from).add(to);
     }
 
     // BFS Traversal
     void BFS(int start) {
 
-        boolean visited[] = new boolean[vertices];
-
-        Queue<Integer> queue = new LinkedList<>();
+        boolean visited[] = new boolean[services.length];
+        Queue<Integer> q = new LinkedList<>();
 
         visited[start] = true;
-        queue.add(start);
+        q.add(start);
 
-        System.out.print("BFS Traversal: ");
+        System.out.print("BFS: ");
 
-        while (!queue.isEmpty()) {
+        while (!q.isEmpty()) {
 
-            int current = queue.poll();
+            int current = q.poll();
 
-            System.out.print(current + " ");
+            System.out.print(services[current] + " ");
 
-            for (int neighbor : adj.get(current)) {
-
-                if (!visited[neighbor]) {
-
-                    visited[neighbor] = true;
-                    queue.add(neighbor);
+            for (int next : graph.get(current)) {
+                if (!visited[next]) {
+                    visited[next] = true;
+                    q.add(next);
                 }
             }
         }
@@ -54,119 +50,92 @@ public class MicroserviceGraph {
     }
 
     // DFS Traversal
-    void DFS(int start) {
+    void DFS(int start, boolean visited[]) {
 
-        boolean visited[] = new boolean[vertices];
+        visited[start] = true;
+        System.out.print(services[start] + " ");
 
-        System.out.print("DFS Traversal: ");
-
-        dfsHelper(start, visited);
-
-        System.out.println();
-    }
-
-    void dfsHelper(int vertex, boolean visited[]) {
-
-        visited[vertex] = true;
-
-        System.out.print(vertex + " ");
-
-        for (int neighbor : adj.get(vertex)) {
-
-            if (!visited[neighbor]) {
-                dfsHelper(neighbor, visited);
+        for (int next : graph.get(start)) {
+            if (!visited[next]) {
+                DFS(next, visited);
             }
         }
     }
 
-    // Cycle Detection
-    boolean hasCycle() {
+    // Topological Sort and Cycle Detection
+    void deploymentOrder() {
 
-        boolean visited[] = new boolean[vertices];
-        boolean recStack[] = new boolean[vertices];
+        int indegree[] = new int[services.length];
 
-        for (int i = 0; i < vertices; i++) {
+        for (int i = 0; i < services.length; i++) {
+            for (int next : graph.get(i)) {
+                indegree[next]++;
+            }
+        }
 
-            if (!visited[i]) {
+        Queue<Integer> q = new LinkedList<>();
 
-                if (detectCycle(i, visited, recStack)) {
-                    return true;
+        for (int i = 0; i < services.length; i++) {
+            if (indegree[i] == 0) {
+                q.add(i);
+            }
+        }
+
+        int count = 0;
+
+        System.out.print("Deployment Order: ");
+
+        while (!q.isEmpty()) {
+
+            int current = q.poll();
+
+            System.out.print(services[current] + " ");
+            count++;
+
+            for (int next : graph.get(current)) {
+
+                indegree[next]--;
+
+                if (indegree[next] == 0) {
+                    q.add(next);
                 }
             }
         }
 
-        return false;
-    }
-
-    boolean detectCycle(int vertex, boolean visited[], boolean recStack[]) {
-
-        visited[vertex] = true;
-        recStack[vertex] = true;
-
-        for (int neighbor : adj.get(vertex)) {
-
-            if (!visited[neighbor]) {
-
-                if (detectCycle(neighbor, visited, recStack)) {
-                    return true;
-                }
-
-            } else if (recStack[neighbor]) {
-
-                return true;
-            }
+        if (count != services.length) {
+            System.out.println("\nCycle Detected!");
+        } else {
+            System.out.println("\nNo Cycle Detected!");
         }
-
-        recStack[vertex] = false;
-
-        return false;
     }
 
     public static void main(String[] args) {
 
-        MicroserviceGraph graph = new MicroserviceGraph(6);
+        MicroserviceGraph g = new MicroserviceGraph();
 
-
-        graph.addEdge(0, 1);
-        graph.addEdge(0, 2);
-        graph.addEdge(1, 3);
-        graph.addEdge(1, 4);
-        graph.addEdge(2, 4);
-        graph.addEdge(3, 5);
-        graph.addEdge(4, 5);
+        // Adding dependencies
+        g.addEdge(0, 2); // Pricing -> Cart
+        g.addEdge(1, 2); // Inventory -> Cart
+        g.addEdge(2, 3); // Cart -> Payment
+        g.addEdge(3, 4); // Payment -> Notification
 
         System.out.println("MICROSERVICE DEPENDENCY GRAPH");
 
-        System.out.println("0 - User Service");
-        System.out.println("1 - Product Service");
-        System.out.println("2 - Order Service");
-        System.out.println("3 - Payment Service");
-        System.out.println("4 - Inventory Service");
-        System.out.println("5 - Notification Service");
+        g.BFS(0);
 
-        System.out.println();
+        System.out.print("DFS: ");
+        g.DFS(0, new boolean[5]);
 
-        graph.BFS(0);
+        System.out.println("\n");
 
-        graph.DFS(0);
+        // Valid deployment order
+        g.deploymentOrder();
 
-        System.out.println();
+        // Adding circular dependency
+        g.addEdge(4, 0);
 
-        if (graph.hasCycle()) {
-            System.out.println("Cycle Detected in the Graph");
-        } else {
-            System.out.println("No Cycle Detected in the Graph");
-        }
+        System.out.println("\nAfter adding Notification -> Pricing:");
 
-        // Add an edge to demonstrate cycle detection
-        graph.addEdge(5, 0);
-
-        System.out.println("\nAfter Adding Dependency 5 -> 0:");
-
-        if (graph.hasCycle()) {
-            System.out.println("Cycle Detected in the Graph");
-        } else {
-            System.out.println("No Cycle Detected in the Graph");
-        }
+        g.deploymentOrder();
     }
 }
