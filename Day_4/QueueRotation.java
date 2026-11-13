@@ -1,6 +1,7 @@
 package Day_4;
 
 import java.util.*;
+import java.util.LinkedList;
 
 public class QueueRotation {
     public static void main(String[] args) {
